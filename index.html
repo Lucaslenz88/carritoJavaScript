@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div id="contenedor">
+        <div class="header">
+            <img src="/Imagenes/images.png" id="img1" class="img-fluid" alt="Kwik-E-Mart">
+            <h1 id="text" >MERCADO ONLINE 24HS</h1>
+            <img src="/Imagenes/images.png" id="img2" class="img-fluid" alt="Kwik-E-Mart">
+        </div>
+        <div id="mensaje" class="alert alert-danger" role="alert" ></div>
+        <div id="lista">
+            <table class="table">
+                <thead style="font-family: Merriweather Sans; background-color: deepskyblue" class = "thead">
+                    <th>PRODUCTO</th>
+                    <th>PRECIO UNITARIO</th>
+                    <th>STOCK</th>
+                    <th>CANTIDAD A COMPRAR</th>
+                    <th></th>
+                </thead>        
+                <tbody id="tablaComprar" class ="Mayuscula"></tbody>
+            </table>
+        </div>
+        <div id="carrito">
+            <table class="table table-striped">
+                <thead style="font-family: 'Merriweather Sans'; background-color: deepskyblue">
+                    <th>PRODUCTO</th>
+                    <th>PRECIO UNITARIO</th>
+                    <th>CANTIDAD A COMPRAR</th>
+                    <th></th>
+                </thead>
+                <tbody id="tablaCarrito" class ="Mayuscula"></tbody>
+            </table>
+        </div>
+        <div style = "background-color: lime; font-family:'Bungee'; font-size: 24px" id="vacio" class="alert alert" role="alert"></div>
+        <div id="compra">
+            <button class="btn btn-primary" data-toggle="button" aria-pressed="false" onclick="finalizarCompra()">Finalizar compra</button>
+            <div id="totalCompra" style="font-family:'Bungee'; font-size: 20px; background-color: lime;" class="alert alert" role="alert"></div>
+        </div>
+    </div>
+    <script src="/script/script.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,61 @@
+#contenedor{
+    display:grid;
+    grid-template-columns: 2fr 2fr;
+    grid-template-areas: 
+        "h1 h1"
+        "msj msj"
+        "lista carrito"
+        "vacio compra";
+}
+.header{ 
+    grid-area: h1;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "img1 text img2";
+    justify-items: center;
+}
+
+#img1{
+    grid-area: img1;
+}
+
+#text{
+    grid-area: text;
+    line-height: 150px;
+    color: red;
+    font-family: "Bungee";
+    font-size: 40px;
+    text-shadow: 3px 3px black;
+}
+
+#img2{
+    grid-area: img2;
+}
+
+#mensaje{
+    grid-area: msj;
+    font-size: 20px;
+}
+
+#lista{
+    grid-area: lista;
+}
+
+#carrito{
+    grid-area: carrito;
+}
+
+#vacio{
+    grid-area: vacio;
+}
+
+#compra{
+    grid-area: compra;
+    }
+
+.Mayuscula{
+    text-transform: uppercase;
+    color: red;
+}
+
