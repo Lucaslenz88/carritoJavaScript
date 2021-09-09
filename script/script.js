@@ -87,7 +87,7 @@ function crearElementoTabla(productos){
     //Input
     var tdInput = document.createElement("td");
     var inputCantidad = document.createElement("input");
-    inputCantidad.setAttribute("type", "text");
+    inputCantidad.setAttribute("type", "number");
     tdInput.appendChild(inputCantidad);
     
     // Crear los botones con sus eventos: que "Comprar" agregue el producto a la tabla Carrito (creando otro vector? o solo agregandolo a la tabla?)
@@ -123,68 +123,70 @@ function AgregarCarrito(e){
     
         var cantidadCompra = parseInt(e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.nextSibling.firstChild.value);
         var stock = parseInt(e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.innerHTML);
-
         var mensaje = document.querySelector("#mensaje");
+     
+            console.log("cantidad:"+cantidadCompra+"stock:"+stock)
 
-        console.log("cantidad:"+cantidadCompra+"stock:"+stock)
-
-        if(cantidadCompra > stock){
-            mensaje.innerHTML = "Por el momento no hay suficiente stock de este artículo"
-        
-        }
-        else{
-            var nombreProducto = e.target.parentNode.parentNode.firstChild.innerHTML;
-            console.log(nombreProducto);
-            var find = listaVacia.findIndex(elemento => elemento == nombreProducto);
-            if(find != -1){
-
-                    mensaje.innerHTML = "El producto seleccionado ya fue agregado a su Carrito de Compras"
-                }
+            if(cantidadCompra > stock){
+                mensaje.innerHTML = "Por el momento no hay suficiente stock de este artículo"
+            
+            }
             else{
-                                
-                //Nombre2    
-                var tdNombre2 = document.createElement("td");
-                var txtNombre2 = document.createTextNode(e.target.parentNode.parentNode.firstChild.innerHTML);
-                tdNombre2.appendChild(txtNombre2);
+                var nombreProducto = e.target.parentNode.parentNode.firstChild.innerHTML;
+                console.log(nombreProducto);
+                var find = listaVacia.findIndex(elemento => elemento == nombreProducto);
+                if(find != -1){
+    
+                        mensaje.innerHTML = "El producto seleccionado ya fue agregado a su Carrito de Compras"
+                    }
+                else{
+                    mensaje.innerHTML = ""; 
+                    //Nombre2    
+                    var tdNombre2 = document.createElement("td");
+                    var txtNombre2 = document.createTextNode(e.target.parentNode.parentNode.firstChild.innerHTML);
+                    tdNombre2.appendChild(txtNombre2);
+    
+                //Cantidad2
+                    var tdCantidad2 = document.createElement("td");
+                    var txtCantidad2 = document.createTextNode(e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.nextSibling.firstChild.value);
+                    tdCantidad2.appendChild(txtCantidad2);
+    
+                //PrecioUnitario
+                    var tdPrecioUnitario = document.createElement("td");
+                    var txtPrecioUnitario = document.createTextNode(e.target.parentNode.parentNode.firstChild.nextSibling.innerHTML);
+                    tdPrecioUnitario.appendChild(txtPrecioUnitario);
+    
+                //Boton Quitar
+                    var tdBotonBorrar = document.createElement("td");
+                    var btnBorrar = document.createElement("button");
+                    var txtBotonBorrar = document.createTextNode("Quitar");
+                    btnBorrar.appendChild(txtBotonBorrar);
+                    tdBotonBorrar.appendChild(btnBorrar);
+                    btnBorrar.addEventListener("click", borrarElemento);
+    
+                //table row
+                    var tr2 = document.createElement("tr");
+                    tr2.appendChild(tdNombre2);
+                    tr2.appendChild(tdPrecioUnitario);
+                    tr2.appendChild(tdCantidad2);
+                    tr2.appendChild(tdBotonBorrar);
+    
+                    var tbody2 = document.querySelector("#tablaCarrito");
+                    tbody2.appendChild(tr2);
+    
+                    listaVacia.push(nombreProducto);
+                                console.log(listaVacia);
+    
+                // Sumar a un contador el precio de los articulos seleccionados
+    
+                    contador = contador + (parseInt(e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.nextSibling.firstChild.value) * parseInt(e.target.parentNode.parentNode.firstChild.nextSibling.innerHTML));
+                    console.log(contador);
+    
+    
+                }}       
+        }
 
-            //Cantidad2
-                var tdCantidad2 = document.createElement("td");
-                var txtCantidad2 = document.createTextNode(e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.nextSibling.firstChild.value);
-                tdCantidad2.appendChild(txtCantidad2);
-
-            //PrecioUnitario
-                var tdPrecioUnitario = document.createElement("td");
-                var txtPrecioUnitario = document.createTextNode(e.target.parentNode.parentNode.firstChild.nextSibling.innerHTML);
-                tdPrecioUnitario.appendChild(txtPrecioUnitario);
-
-            //Boton Quitar
-                var tdBotonBorrar = document.createElement("td");
-                var btnBorrar = document.createElement("button");
-                var txtBotonBorrar = document.createTextNode("Quitar");
-                btnBorrar.appendChild(txtBotonBorrar);
-                tdBotonBorrar.appendChild(btnBorrar);
-                btnBorrar.addEventListener("click", borrarElemento);
-
-            //table row
-                var tr2 = document.createElement("tr");
-                tr2.appendChild(tdNombre2);
-                tr2.appendChild(tdPrecioUnitario);
-                tr2.appendChild(tdCantidad2);
-                tr2.appendChild(tdBotonBorrar);
-
-                var tbody2 = document.querySelector("#tablaCarrito");
-                tbody2.appendChild(tr2);
-
-                listaVacia.push(nombreProducto);
-                            console.log(listaVacia);
-
-            // Sumar a un contador el precio de los articulos seleccionados
-
-                contador = contador + (parseInt(e.target.parentNode.parentNode.firstChild.nextSibling.nextSibling.nextSibling.firstChild.value) * parseInt(e.target.parentNode.parentNode.firstChild.nextSibling.innerHTML));
-                console.log(contador);
-
-
-            }}        }
+         
 
               
 var contador = 0;   
